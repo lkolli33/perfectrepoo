@@ -59,7 +59,7 @@ export class DragComponent implements OnInit {
       group[item.fieldName] = new FormControl(item.fieldName);
     });
     this.form = new FormGroup(group);
-   // console.log("this.form", this.form);
+   console.log("this.form", this.form);
   }
 
 }
