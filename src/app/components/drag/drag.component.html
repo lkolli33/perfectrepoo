@@ -1,0 +1,62 @@
+
+<h1 align="center">Form builder using drag and drop</h1>
+
+<div *ngIf="form" class="container" style="background:rgb(187, 211, 219)">
+    <h3>Preview Form</h3>
+    <form [formGroup]="form" >
+         
+        <div *ngFor="let ctrl of JSONcontrols"  >
+            <div  > <label [attr.for]="ctrl.fieldName" >{{ctrl.fieldName}}:</label>
+               
+            <div [ngSwitch]="ctrl.controlType"   >
+                <input *ngSwitchCase="'TextBox'" [formControlName]="ctrl.fieldName" class="form-control" >
+               
+                <input *ngSwitchCase="'CheckBox'" type="checkbox" [formControlName]="ctrl.fieldName"  >
+                <label>
+                <input *ngSwitchCase="'RadioButton'" type="radio"  [formControlName]="ctrl.fieldName">
+                <input *ngSwitchCase="'Button'" type="button" [formControlName]="ctrl.fieldName" class="form-control">
+                <select [id]="ctrl.fieldName" *ngSwitchCase="'Dropdown'" [formControlName]="ctrl.fieldName" class="form-control">
+                    <option *ngFor="let opt of ctrl.fieldName" >
+                       India
+                    </option>
+                </select>
+                <input *ngSwitchCase="'TextArea'" type="text"  [formControlName]="ctrl.fieldName" class="form-control">
+                <input *ngSwitchCase="'DateTime'" type="datetime" [formControlName]="ctrl.fieldName" class="form-control">
+                </label>
+</div>
+                </div>
+        </div>
+        <button type="submit" >Save Form</button>
+     </form>
+  </div> 
+<div>
+        <br/>
+        <div style="width:300px; float:left;">
+                <ul>
+                        <li appDraggable class="box"  *ngFor="let component of components"  appDroppable 
+                        (dragStart)="currentComponent=component" >
+                            {{component}}
+                            <div class="box" *appDraggableHelper>
+                                    {{component}}
+                            </div>
+                        </li>
+                    </ul>
+        </div>
+        <div style="float:center;" class="dropzone" appDropzone (drop)="move(currentComponent)" 
+         (dragStart)="currentComponent=component">
+         <ul appSortableList (sort)="sort($event)">
+             <li  class="box" *ngFor="let comp of dropZone" appSortable (dragStart)="currentComponent=component">
+                    <input type="text" name="{{comp.controlType}}" value="{{comp.controlType}}">
+                    <div class="box" *appDraggableHelper>
+                            <input type="text" name="{{comp.controlType}}">
+                    </div>
+             </li>
+         </ul>
+        </div>
+        <button type="submit" (click)="preview()">Preview form</button>     
+    </div>
+  
+    
+    
+
+

@@ -1,0 +1,73 @@
+.box{
+    background: rgb(202, 223, 145);
+    display: inline-flex;
+    padding: 10px 20px;
+    border: 1px solid black;
+
+    &.dragging{
+        background: coral;
+    }
+    &.sortable.dragging
+    {
+        background:none;
+        border:1px dashed black;
+        color:transparent;
+    }
+
+}
+.smallbox{
+    background: rgb(202, 223, 145);
+    display: inline-flex;
+    padding: 3px 10px;
+    border: 1px solid black;
+}
+.left{
+   width:140px;
+   float:left;
+   height:100%;
+ }
+
+ .right{
+   margin-left:140px;
+ }
+.area{
+    background: rgb(248, 189, 189);
+    padding: 40px;
+    border:1px solid black;
+}
+ul{
+    display: inline-flex;
+    margin:0;
+    padding:0;
+    flex-direction:column;
+
+}
+.dropzone{
+    background:rgb(224, 223, 223);
+    display: inline-block;
+    padding: 200px ;
+    margin:20px 0;
+    min-height: 200px;
+    border: 1px solid black;
+    position: absolute;
+    &.dropzone-activated{
+        border:3px solid red
+    }
+    &.dropzone-entered{
+        background: rgb(241, 232, 239)
+    }
+}
+.aligncenter
+{
+    align-content: center;
+}
+.bigbox{
+    background:rgb(224, 223, 223);
+    display: inline-block;
+    padding: 200px ;
+    margin:20px 0;
+    min-height: 200px;
+    border: 1px solid black;
+    position: absolute;
+
+}

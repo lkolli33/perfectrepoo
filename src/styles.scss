@@ -1,0 +1,17 @@
+/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import  "~@angular/cdk/overlay";
+@include cdk-overlay();
+
+
+.draggable{
+ cursor: move;
+ user-select: none;
+}
+.movable:not(.dragging){
+    transition: transform 30ms ease-in-out; 
+
+}
+.draggable-helper-overlay{
+    pointer-events: none !important;
+}
